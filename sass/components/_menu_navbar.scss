@@ -1,0 +1,118 @@
+@import '../abstract/mixins';
+@import '../abstract/variables';
+
+//header-navbar - open
+.header_navbar{
+    border: 1px solid #000;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+    // position:fixed;
+    // margin:auto;
+    width: 100%;
+    background:#fff;
+    .container,.humburger_menu,.humburger_menu_item,ul{
+        // display:flex;
+        // justify-content:space-between;
+        // align-items: center;
+        @include flex-element;
+    }
+}
+.header_navbar.sticky{
+    // position:fixed;
+    // top: 0;
+}
+.humburger_menu{
+    #check,.checkbtn{
+        display: none;
+    }
+}
+.humburger_menu_item{
+    ul{
+        li{
+          transition: all 0.7s ease;
+          text-transform: uppercase;
+          &:not(:last-child){
+              margin-right: 3rem;
+          }
+          &:last-child{
+            margin-right: 5.8rem;
+          }
+        }
+        
+    }
+    a,.leave_a_message{
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1.7rem;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #000;
+        transition: all 0.7s ease;
+    }
+    a{
+        padding:10px 0;
+        &:hover{
+            border-bottom: 1px solid #000;
+        }
+        &.nav_active{
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+        }
+    }
+    .leave_a_message{
+        padding: 1.4rem 2.4rem;
+        color: #fff;
+        background-color:#826E5B;
+        cursor: pointer;
+        position: relative;
+        display: block;
+        &::before,&::after{
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 140%;
+            display: block;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color:#826E5B;
+        }
+        &::after{
+            left:unset;
+            right: 0;
+        }
+        .btn_simple_first,.btn_simple_second{
+            position: absolute;
+            display:block;
+            top: 0;
+            left: 50%;
+            background-color:#826E5B;
+            height: 1px;
+            width: 110%;
+            transform: translateX(-50%);
+        }
+        .btn_simple_second{
+            top: unset;
+            bottom: 0;
+        }
+        &:hover{
+            .btn_simple_first,.btn_simple_second{
+                display: none;
+            }
+            &::after,&::before{
+                display: none;
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 768px) and (min-width: 320px) and (orientation:portrait) {
+    .humburger_menu_item{
+        ul{
+            li{
+                margin-right: 0;
+            }
+        }
+    }   
+}
